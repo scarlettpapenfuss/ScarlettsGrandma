@@ -1,5 +1,5 @@
 package org.example;
-
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -9,8 +9,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
     static List<String> knownWords;
 
     public static void main(String[] args) {
@@ -19,23 +18,45 @@ public class App
         try {
             BufferedReader br = new BufferedReader(new FileReader("common_words.txt"));
             String nextWord;
-            while((nextWord = br.readLine()) != null) {
+            while ((nextWord = br.readLine()) != null) {
                 knownWords.add(nextWord);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Hello, I'm Grandma Betty");
+
+        Scanner scan = new Scanner(System.in);
+        Grandma grandma = new Betty();
+        System.out.println("Hello! Im grandma " + grandma.getName() + ".");
+
+        int numTries = 5;
+        while(numTries > 0) {
+            System.out.println("Enter a word to see if I like it or not. ");
+            String userGuess = scan.nextLine();
+            if(grandma.likesWord(userGuess)){
+                System.out.println("Yes! I like that word.");
+            }
+            if(!grandma.likesWord(userGuess)){
+                System.out.println("I hate that word!");
+                numTries--;
+            }
+            if(numTries > 1 || numTries == 0){
+                System.out.println("You have " + numTries + " guesses left.");
+            }else{
+                System.out.println("You have " + numTries + " guess left.");
+            }
+            if(numTries <= 0){
+                System.out.println("You lose! :( ");
+            }
+        }
 
 
     }
 
-    /**
-     * This method should return true if the given String has consecutive letters that are the same.
-     * @param str -- the String in question.
-     * @return true if str has any consecutive letters that are identical; false if not.
-     */
-    public static boolean hasDoubleLetters(String str) {
-        return false;
-    }
 }
+
+
+
+
+
+
