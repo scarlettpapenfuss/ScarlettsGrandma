@@ -26,9 +26,8 @@ public class App {
         }
 
         Scanner scan = new Scanner(System.in);
-        Grandma grandma = new Betty();
-        System.out.println("Hello! Im grandma " + grandma.getName() + ".");
-
+        Grandma grandma = new Ava();
+        System.out.println("Hello! I am grandma " + grandma.getName());
         int numTries = 5;
         while(numTries > 0) {
             System.out.println("Enter a word to see if I like it or not. ");
@@ -49,7 +48,6 @@ public class App {
                 System.out.println("You lose! :( ");
             }
         }
-
 
     }
 
